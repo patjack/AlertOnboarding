@@ -49,15 +49,18 @@ open class AlertOnboarding: UIView, AlertPageViewDelegate {
     open var titleGotItButton = "GOT IT !"
     
     open var delegate: AlertOnboardingDelegate?
+    var titleSize : CGFloat?
+    var descriptionSize: CGFloat?
     
     
-    public init (arrayOfImage: [String], arrayOfTitle: [String], arrayOfDescription: [String]) {
+    public init (arrayOfImage: [String], arrayOfTitle: [String], arrayOfDescription: [String], titleSize: CGFloat?, descriptionSize: CGFloat?) {
         super.init(frame: CGRect(x: 0,y: 0,width: 0,height: 0))
         self.configure(arrayOfImage, arrayOfTitle: arrayOfTitle, arrayOfDescription: arrayOfDescription)
         self.arrayOfImage = arrayOfImage
         self.arrayOfTitle = arrayOfTitle
         self.arrayOfDescription = arrayOfDescription
-        
+        self.titleSize = titleSize
+        self.descriptionSize = descriptionSize
         self.interceptOrientationChange()
     }
     
@@ -85,7 +88,7 @@ open class AlertOnboarding: UIView, AlertPageViewDelegate {
         self.buttonBottom.setTitleColor(colorButtonText, for: UIControlState())
         self.buttonBottom.setTitle(self.titleSkipButton, for: UIControlState())
         
-        self.container = AlertPageViewController(arrayOfImage: arrayOfImage, arrayOfTitle: arrayOfTitle, arrayOfDescription: arrayOfDescription, alertView: self)
+        self.container = AlertPageViewController(arrayOfImage: arrayOfImage, arrayOfTitle: arrayOfTitle, arrayOfDescription: arrayOfDescription, alertView: self, titleSize: self.titleSize, descriptionSize: self.descriptionSize)
         self.container.delegate = self
         self.insertSubview(self.container.view, aboveSubview: self)
         self.insertSubview(self.buttonBottom, aboveSubview: self)

@@ -31,13 +31,18 @@ class AlertPageViewController: UIViewController, UIPageViewControllerDataSource,
     var isCompleted = false
     var delegate: AlertPageViewDelegate?
     
+    var titleSize : CGFloat?
+    var descriptionSize: CGFloat?
     
-    init (arrayOfImage: [String], arrayOfTitle: [String], arrayOfDescription: [String], alertView: AlertOnboarding) {
+    
+    init (arrayOfImage: [String], arrayOfTitle: [String], arrayOfDescription: [String], alertView: AlertOnboarding, titleSize: CGFloat?, descriptionSize: CGFloat?) {
         super.init(nibName: nil, bundle: nil)
         self.arrayOfImage = arrayOfImage
         self.arrayOfTitle = arrayOfTitle
         self.arrayOfDescription = arrayOfDescription
         self.alertview = alertView
+        self.titleSize = titleSize
+        self.descriptionSize = descriptionSize
     }
     
     required init(coder: NSCoder) {
@@ -118,8 +123,10 @@ class AlertPageViewController: UIViewController, UIPageViewControllerDataSource,
         pageContentViewController.image.image = UIImage(named: arrayOfImage[realIndex])
         pageContentViewController.labelMainTitle.text = arrayOfTitle[realIndex]
         pageContentViewController.labelMainTitle.textColor = alertview.colorTitleLabel
+        pageContentViewController.labelMainTitle.font = UIFont(name: pageContentViewController.labelMainTitle.font.fontName, size: ((self.titleSize != nil) ? self.titleSize! : pageContentViewController.labelMainTitle.font.pointSize))
         pageContentViewController.labelDescription.text = arrayOfDescription[realIndex]
         pageContentViewController.labelDescription.textColor = alertview.colorDescriptionLabel
+        pageContentViewController.labelDescription.font = UIFont(name: pageContentViewController.labelDescription.font.fontName, size: ((self.descriptionSize != nil) ? self.descriptionSize! : pageContentViewController.labelDescription.font.pointSize))
         
         return pageContentViewController
     }
