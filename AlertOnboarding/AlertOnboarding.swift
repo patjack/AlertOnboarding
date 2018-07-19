@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import LBTAComponents
 
 public protocol AlertOnboardingDelegate {
     func alertOnboardingSkipped(_ currentStep: Int, maxStep: Int)
@@ -149,45 +150,25 @@ open class AlertOnboarding: UIView, AlertPageViewDelegate {
     
     fileprivate func configureConstraints(_ superView: UIView) {
         
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.buttonBottom.translatesAutoresizingMaskIntoConstraints = false
-        self.container.view.translatesAutoresizingMaskIntoConstraints = false
-        self.background.translatesAutoresizingMaskIntoConstraints = false
+        removeConstraints(constraints)
+        buttonBottom.removeConstraints(buttonBottom.constraints)
+        container.view.removeConstraints(container.view.constraints)
         
-        self.removeConstraints(self.constraints)
-        self.buttonBottom.removeConstraints(self.buttonBottom.constraints)
-        self.container.view.removeConstraints(self.container.view.constraints)
+        equal(width: superView.widthAnchor, widthMultiplier: percentageRatioWidth,
+              height: superView.heightAnchor, heightMultiplier: percentageRatioHeight)
+        anchorCenterSuperview()
         
-        heightForAlertView = UIScreen.main.bounds.height*percentageRatioHeight
-        widthForAlertView = UIScreen.main.bounds.width*percentageRatioWidth
-        
-        //Constraints for alertview
-        let horizontalContraintsAlertView = NSLayoutConstraint(item: self, attribute: .centerXWithinMargins, relatedBy: .equal, toItem: superView, attribute: .centerXWithinMargins, multiplier: 1.0, constant: 0)
-        let verticalContraintsAlertView = NSLayoutConstraint(item: self, attribute:.centerYWithinMargins, relatedBy: .equal, toItem: superView, attribute: .centerYWithinMargins, multiplier: 1.0, constant: 0)
-        let heightConstraintForAlertView = NSLayoutConstraint.init(item: self, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: heightForAlertView)
-        let widthConstraintForAlertView = NSLayoutConstraint.init(item: self, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: widthForAlertView)
-        
-        //Constraints for button
-        let verticalContraintsButtonBottom = NSLayoutConstraint(item: self.buttonBottom, attribute:.centerXWithinMargins, relatedBy: .equal, toItem: self, attribute: .centerXWithinMargins, multiplier: 1.0, constant: 0)
-        let heightConstraintForButtonBottom = NSLayoutConstraint.init(item: self.buttonBottom, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: heightForAlertView*0.1)
-        let widthConstraintForButtonBottom = NSLayoutConstraint.init(item: self.buttonBottom, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: widthForAlertView)
-        let pinContraintsButtonBottom = NSLayoutConstraint(item: self.buttonBottom, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0)
+        buttonBottom.equal(width: widthAnchor, height: heightAnchor, heightMultiplier: 0.1)
+        buttonBottom.anchor(bottom: bottomAnchor)
+        buttonBottom.anchorCenterXToSuperview()
         
         //Constraints for container
-        let verticalContraintsForContainer = NSLayoutConstraint(item: self.container.view, attribute:.centerXWithinMargins, relatedBy: .equal, toItem: self, attribute: .centerXWithinMargins, multiplier: 1.0, constant: 0)
-        let heightConstraintForContainer = NSLayoutConstraint.init(item: self.container.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: heightForAlertView*0.9)
-        let widthConstraintForContainer = NSLayoutConstraint.init(item: self.container.view, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: widthForAlertView)
-        let pinContraintsForContainer = NSLayoutConstraint(item: self.container.view, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0)
-        
+        container.view.equal(width: widthAnchor, height: heightAnchor, heightMultiplier: 0.9)
+        container.view.anchor(top: topAnchor)
+        container.view.anchorCenterXToSuperview()
         
         //Constraints for background
-        let widthContraintsForBackground = NSLayoutConstraint(item: self.background, attribute:.width, relatedBy: .equal, toItem: superView, attribute: .width, multiplier: 1, constant: 0)
-        let heightConstraintForBackground = NSLayoutConstraint.init(item: self.background, attribute: .height, relatedBy: .equal, toItem: superView, attribute: .height, multiplier: 1, constant: 0)
-        
-        NSLayoutConstraint.activate([horizontalContraintsAlertView, verticalContraintsAlertView,heightConstraintForAlertView, widthConstraintForAlertView,
-                                     verticalContraintsButtonBottom, heightConstraintForButtonBottom, widthConstraintForButtonBottom, pinContraintsButtonBottom,
-                                     verticalContraintsForContainer, heightConstraintForContainer, widthConstraintForContainer, pinContraintsForContainer,
-                                     widthContraintsForBackground, heightConstraintForBackground])
+        background.fillSuperview()
     }
     
     //MARK: FOR ANIMATIONS ---------------------------------

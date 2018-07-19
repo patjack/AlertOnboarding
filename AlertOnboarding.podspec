@@ -18,4 +18,6 @@ s.resource_bundles = {
   ]
 }
 
+s.dependency 'LBTAComponents', '~> 1.0.2'
+
 end
