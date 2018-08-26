@@ -16,6 +16,7 @@
 		37845A7E1D994D87009B3734 /* AlertChildPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37845A7D1D994D87009B3734 /* AlertChildPageViewController.swift */; };
 		37845A801D994DA6009B3734 /* AlertPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37845A7F1D994DA6009B3734 /* AlertPageViewController.swift */; };
 		37845A821D994DE6009B3734 /* AlertChildPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37845A811D994DE6009B3734 /* AlertChildPageViewController.xib */; };
+		419D17242101363A004F0993 /* UIView+Anchors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419D171721013639004F0993 /* UIView+Anchors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		37845A7D1D994D87009B3734 /* AlertChildPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertChildPageViewController.swift; sourceTree = "<group>"; };
 		37845A7F1D994DA6009B3734 /* AlertPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertPageViewController.swift; sourceTree = "<group>"; };
 		37845A811D994DE6009B3734 /* AlertChildPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertChildPageViewController.xib; sourceTree = "<group>"; };
+		419D171721013639004F0993 /* UIView+Anchors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Anchors.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		37845A7A1D994D51009B3734 /* Alert */ = {
 			isa = PBXGroup;
 			children = (
+				419D171721013639004F0993 /* UIView+Anchors.swift */,
 				37845A7B1D994D65009B3734 /* AlertOnboarding.swift */,
 				37845A7D1D994D87009B3734 /* AlertChildPageViewController.swift */,
 				37845A7F1D994DA6009B3734 /* AlertPageViewController.swift */,
@@ -160,6 +163,7 @@
 				37845A801D994DA6009B3734 /* AlertPageViewController.swift in Sources */,
 				37845A6B1D994CBA009B3734 /* ViewController.swift in Sources */,
 				37845A7E1D994D87009B3734 /* AlertChildPageViewController.swift in Sources */,
+				419D17242101363A004F0993 /* UIView+Anchors.swift in Sources */,
 				37845A7C1D994D65009B3734 /* AlertOnboarding.swift in Sources */,
 				37845A691D994CBA009B3734 /* AppDelegate.swift in Sources */,
 			);
@@ -291,7 +295,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cookminute.AlertOnboarding;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -304,7 +308,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cookminute.AlertOnboarding;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

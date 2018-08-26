@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import LBTAComponents
 
 public protocol AlertOnboardingDelegate {
     func alertOnboardingSkipped(_ currentStep: Int, maxStep: Int)
@@ -164,7 +163,7 @@ open class AlertOnboarding: UIView, AlertPageViewDelegate {
         
         //Constraints for container
         container.view.equal(width: widthAnchor, height: heightAnchor, heightMultiplier: 0.9)
-        container.view.anchor(top: topAnchor)
+        container.view.anchor(topAnchor)
         container.view.anchorCenterXToSuperview()
         
         //Constraints for background
