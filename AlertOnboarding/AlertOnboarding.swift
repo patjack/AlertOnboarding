@@ -49,6 +49,8 @@ open class AlertOnboarding: UIView, AlertPageViewDelegate {
     open var titleGotItButton = "GOT IT !"
     
     open var delegate: AlertOnboardingDelegate?
+    var titleSize : CGFloat?
+    var descriptionSize: CGFloat?
     
     
     public init (arrayOfImage: [String], arrayOfTitle: [String], arrayOfDescription: [String]) {
@@ -57,8 +59,12 @@ open class AlertOnboarding: UIView, AlertPageViewDelegate {
         self.arrayOfImage = arrayOfImage
         self.arrayOfTitle = arrayOfTitle
         self.arrayOfDescription = arrayOfDescription
-        
         self.interceptOrientationChange()
+    }
+    
+    public func setSizes(titleSize: CGFloat?, descriptionSize: CGFloat?){
+        self.titleSize = titleSize
+        self.descriptionSize = descriptionSize
     }
     
     override public init(frame: CGRect) {
@@ -86,6 +92,7 @@ open class AlertOnboarding: UIView, AlertPageViewDelegate {
         self.buttonBottom.setTitle(self.titleSkipButton, for: UIControlState())
         
         self.container = AlertPageViewController(arrayOfImage: arrayOfImage, arrayOfTitle: arrayOfTitle, arrayOfDescription: arrayOfDescription, alertView: self)
+        self.container.setSizes(titleSize: titleSize, descriptionSize: descriptionSize)
         self.container.delegate = self
         self.insertSubview(self.container.view, aboveSubview: self)
         self.insertSubview(self.buttonBottom, aboveSubview: self)
